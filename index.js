@@ -1,5 +1,6 @@
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const { registerPraise } = require('./modules/api');
 
 const config = require("dotenv").config()
 
@@ -17,6 +18,7 @@ client.on('interactionCreate', async interaction => {
   } else if (interaction.commandName === 'praise') {
     console.log(interaction.options);
     const user = interaction.options.data[0].user
+    registerPraise(user)
     const reply = `Users praised!`;
 		const message = await interaction.reply({ content: reply, fetchReply: true });
 		message.react('😄');
