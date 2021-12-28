@@ -13,9 +13,7 @@ client.on("ready", () => {
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) return;
 
-  if (interaction.commandName === "ping") {
-    await interaction.reply("Pong!");
-  } else if (interaction.commandName === "praise") {
+  if (interaction.commandName === "praise") {
     console.log(interaction);
     const user = interaction.options.data[0].user;
     if (registerPraise(user) == 200) {
@@ -30,10 +28,10 @@ client.on("interactionCreate", async (interaction) => {
           "https://cdn.discordapp.com/attachments/839255698092851222/922595373778890762/footer.png"
         )
         .setThumbnail(user.avatarURL())
-        .setTimestamp()
+        .setTimestamp();
 
-      user.send({ embeds: [embedDatos] })
-      
+      user.send({ embeds: [embedDatos] });
+
       const reply = `Users praised!`;
       const message = await interaction.reply({
         content: reply,
