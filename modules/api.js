@@ -3,9 +3,12 @@ const config = require("dotenv").config();
 
 const LOCALHOST = process.env.LOCALHOST;
 
-function registerPraise(user) {
+// TODO: Connect to the API
+function registerPraise(users, reason) {
   const url = LOCALHOST + "/api/praise";
-  console.log(user.username + "#" + user.discriminator);
+  for (const user of users) {
+    console.log(user.user.username + "#" + user.user.discriminator);
+  }
   return 200;
 }
 
